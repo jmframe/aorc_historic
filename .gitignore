@@ -2,7 +2,7 @@
 environment/
 
 # Ignore all ZIP files in the aorc-historic directory
-aorc-historic/**/*.zip
+data/downloads/**/*.zip
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
