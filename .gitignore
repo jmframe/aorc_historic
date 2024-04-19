@@ -1,3 +1,9 @@
+# build environment
+environment/
+
+# Ignore all ZIP files in the aorc-historic directory
+data/downloads/**/*.zip
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
