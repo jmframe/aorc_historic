@@ -1,10 +1,10 @@
 #!/home/jmframe/aorc_historic/environment/.conda/envs/aorc_env/bin/python3
+import argparse
+import yaml
 import os
 import requests
 from os.path import join, exists
 from os import makedirs
-
-
 
 def download_file(url, directory):
     if not exists(directory):
@@ -35,17 +35,26 @@ def download_region_data(base_url, region_code, year, month, base_directory):
     precip_url = join(base_url, f"AORC_{region_code.upper()}_4km/ABRFC_precip_partition/AORC_APCP_4KM_{region_code.upper()}_{formatted_month}.zip")
     download_file(precip_url, precip_directory)
 
-base_url = 'https://hydrology.nws.noaa.gov/aorc-historic/'
-regions = ['AORC_ABRFC_4km', 'AORC_CBRFC_4km', 'AORC_CNRFC_4km', 'AORC_LMRFC_4km',
-           'AORC_MARFC_4km', 'AORC_MBRFC_4km', 'AORC_NCRFC_4km', 'AORC_NERFC_4km',
-           'AORC_NWRFC_4km', 'AORC_OHRFC_4km', 'AORC_SERFC_4km', 'AORC_WGRFC_4km']
+def main():
+    parser = argparse.ArgumentParser(description="Download AORC data based on configurations from a YAML file.")
+    parser.add_argument('-c', '--config', type=str, required=True, help='Path to the configuration file.')
+    args = parser.parse_args()
 
-base_directory = '/home/jmframe/aorc_historic/data/downloads'
+    with open(args.config, 'r') as ymlfile:
+        cfg = yaml.safe_load(ymlfile)
 
-year = 2020  # Change as needed
-month = 5    # Change as needed
+    base_url = cfg['base_url']
+    base_directory = cfg['base_directory']
+    year = cfg['year']
+    month = cfg['month']
+    
+    regions = ['AORC_ABRFC_4km', 'AORC_CBRFC_4km', 'AORC_CNRFC_4km', 'AORC_LMRFC_4km',
+               'AORC_MARFC_4km', 'AORC_MBRFC_4km', 'AORC_NCRFC_4km', 'AORC_NERFC_4km',
+               'AORC_NWRFC_4km', 'AORC_OHRFC_4km', 'AORC_SERFC_4km', 'AORC_WGRFC_4km']
 
-for region in regions:
-    region_code = region.split('_')[1]
-    download_region_data(base_url, region_code, year, month, base_directory)
-    break
+    for region in regions:
+        region_code = region.split('_')[1]
+        download_region_data(base_url, region_code, year, month, base_directory)
+
+if __name__ == "__main__":
+    main()
