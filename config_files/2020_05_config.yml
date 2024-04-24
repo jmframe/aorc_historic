@@ -1,0 +1,4 @@
+base_url: https://hydrology.nws.noaa.gov/aorc-historic/
+base_directory: /home/jmframe/aorc_historic/data/downloads
+year: 2020
+month: 5

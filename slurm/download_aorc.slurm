@@ -7,7 +7,8 @@
 #SBATCH --output=aorc_download_%j.log   # Standard output and error log
 
 module load Anaconda3                    # Load Anaconda module if required
-source activate /home/jmframe/aorc_historic/environment/.conda/envs/aorc_env
+MAIN_DIR="/home/jmframe/aorc_historic/"
+source activate "${MAIN_DIR}environment/.conda/envs/aorc_env"
 
 # Run the download script
-python /home/jmframe/aorc_historic/scripts/download_AORC_by_year_and_month.py
+python "${MAIN_DIR}src/download_AORC_by_year_and_month.py" --config "${MAIN_DIR}config_files/2020_05_config.yml"
