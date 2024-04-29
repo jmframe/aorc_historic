@@ -11,4 +11,4 @@ MAIN_DIR="/home/jmframe/aorc_historic/"
 source activate "${MAIN_DIR}environment/.conda/envs/aorc_env"
 
 # Run the download script
-python "${MAIN_DIR}src/download_AORC_by_year_and_month.py" --config "${MAIN_DIR}config_files/2020_05_config.yml"
+python "${MAIN_DIR}src/download_AORC_by_year_and_month.py" --config "${MAIN_DIR}config_files/download_2020_05_config.yml"

@@ -31,8 +31,8 @@ def download_region_data(base_url, region_code, year, month, base_directory):
     download_file(temp_url, region_directory)
 
     # Precipitation data
-    precip_directory = join(region_directory, "ABRFC_precip_partition")
-    precip_url = join(base_url, f"AORC_{region_code.upper()}_4km/ABRFC_precip_partition/AORC_APCP_4KM_{region_code.upper()}_{formatted_month}.zip")
+    precip_directory = join(region_directory, f"{region_code.upper()}_precip_partition")
+    precip_url = join(base_url, f"AORC_{region_code.upper()}_4km/{region_code.upper()}_precip_partition/AORC_APCP_4KM_{region_code.upper()}_{formatted_month}.zip")
     download_file(precip_url, precip_directory)
 
 def main():
