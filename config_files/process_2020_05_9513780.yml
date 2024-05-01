@@ -1,3 +1,4 @@
 geopackage_path: "/home/jmframe/data/hydrofabric/v20.1/camels/Gage_9513780.gpkg"
 netcdf_directory: "/home/jmframe/data/AORC/netcdf"
-output_csv: "sub_catchment_time_series.csv"
+output_dir: "./"
+debug_limit: 10

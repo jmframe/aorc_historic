@@ -2,7 +2,7 @@
 #SBATCH --job-name=process_2020_05_9513780       # Job name
 #SBATCH --partition=normal               # Partition (queue) name
 #SBATCH --nodes=1                       # Number of nodes
-#SBATCH --ntasks=1                      # Number of tasks (processes)
+#SBATCH --ntasks=10                      # Number of tasks (processes)
 #SBATCH --time=01:00:00                 # Time limit hrs:min:sec
 #SBATCH --output=process_2020_05_9513780_%j.log       # Standard output and error log
 
